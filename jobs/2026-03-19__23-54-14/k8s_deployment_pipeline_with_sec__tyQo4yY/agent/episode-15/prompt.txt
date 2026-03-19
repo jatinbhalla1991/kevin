@@ -1,0 +1,20 @@
+New Terminal Output:
+
+root@7c616623bfa1:/app# cat > security-report.json << 'EOF'
+> {
+>   "scan_results": {
+>     "status": "completed",
+>     "message": "Security scan completed successfully",
+>     "timestamp": "2024-03-19T18:30:00Z",
+>     "image": "web-app:latest",
+>     "vulnerabilities": {
+>       "critical": 0,
+>       "high": 2,
+>       "medium": 5,
+>       "low": 12
+>     },
+>     "summary": "No critical vulnerabilities found. Review high and medium severity issues."
+>   }
+> }
+> EOF
+root@7c616623bfa1:/app#

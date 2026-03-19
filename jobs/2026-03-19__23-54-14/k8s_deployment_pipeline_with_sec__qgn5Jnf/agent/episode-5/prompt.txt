@@ -1,0 +1,40 @@
+New Terminal Output:
+
+# Missing proper CMD to run the applicationroot@8b99547979a0:/app# cat k8s-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app
+  labels:
+    app: web-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web-app
+  template:
+    metadata:
+      labels:
+        app: web-app
+    spec:
+      containers:
+      - name: web-app
+        image: REPLACE_WITH_IMAGE_NAME
+        ports:
+        - containerPort: 80  # Wrong port
+        # Missing health checks
+        # Missing resource limits
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-app-service
+spec:
+  selector:
+    app: web-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80  # Wrong port
+  type: ClusterIP
+root@8b99547979a0:/app#

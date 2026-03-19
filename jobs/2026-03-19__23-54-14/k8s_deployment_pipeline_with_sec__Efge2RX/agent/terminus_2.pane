@@ -1,0 +1,127 @@
+[?2004hroot@9a8b22c8b22d:/app# asciinema rec --stdin /logs/agent/recording.cast
+[?2004l[0;32masciinema: recording asciicast to /logs/agent/recording.cast[0m
+[0;32masciinema: press <ctrl-d> or type "exit" when you're done[0m
+[?2004hroot@9a8b22c8b22d:/app# clear
+[?2004l[H[J[3J[?2004hroot@9a8b22c8b22d:/app# ls -la
+[?2004ltotal 24
+drwxr-xr-x 1 root root 4096 Mar 19 18:07 .
+drwxr-xr-x 1 root root 4096 Mar 19 18:24 ..
+-rw-r--r-- 1 root root  207 Mar 19 18:06 Dockerfile
+-rw-r--r-- 1 root root  645 Mar 19 18:06 app.py
+-rw-r--r-- 1 root root  630 Mar 19 18:06 k8s-deployment.yaml
+-rw-r--r-- 1 root root   30 Mar 19 18:06 requirements.txt
+[?2004hroot@9a8b22c8b22d:/app# cat app.py
+[?2004l"""
+A simple Flask web application for deployment
+"""
+import os
+from flask import Flask, jsonify
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return jsonify({
+        'status': 'running',
+        'message': 'Welcome to the deployment pipeline demo',
+        'version': '1.0.0'
+    })
+
+@app.route('/health')
+def health():
+    return jsonify({'status': 'healthy'})
+
+@app.route('/ready')
+def ready():
+    # Check if app is ready to serve traffic
+    return jsonify({'status': 'ready'})
+
+if __name__ == '__main__':
+    # Missing proper host configuration for container environment
+    # Missing port configuration
+    app.run(debug=True)
+[?2004hroot@9a8b22c8b22d:/app# cat requirements.txt
+[?2004lFlask==3.0.0
+gunicorn==21.2.0
+[?2004hroot@9a8b22c8b22d:/app# cat Dockerfile
+[?2004lFROM python:3.12-slim
+
+WORKDIR /app
+
+# Copy application files
+COPY . /app/
+
+# Install dependencies
+# Missing requirements installation
+
+# Missing EXPOSE directive
+
+# Missing proper CMD to run the application[?2004hroot@9a8b22c8b22d:/app# cat k8s-deployment.yaml
+[?2004lapiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app
+  labels:
+    app: web-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web-app
+  template:
+    metadata:
+      labels:
+        app: web-app
+    spec:
+      containers:
+      - name: web-app
+        image: REPLACE_WITH_IMAGE_NAME
+        ports:
+        - containerPort: 80  # Wrong port
+        # Missing health checks
+        # Missing resource limits
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-app-service
+spec:
+  selector:
+    app: web-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80  # Wrong port
+  type: ClusterIP
+[?2004hroot@9a8b22c8b22d:/app# cat > app.py << 'EOF'
+[?2004l[?2004h> """
+[?2004l[?2004h> A simple Flask web application for deployment
+[?2004l[?2004h> """
+[?2004l[?2004h> import os
+[?2004l[?2004h> from flask import Flask, jsonify
+[?2004l[?2004h> 
+[?2004l[?2004h> app = Flask(__name__)
+[?2004l[?2004h> 
+[?2004l[?2004h> @app.route('/')
+[?2004l[?2004h> def home():
+[?2004l[?2004h>     return jsonify({
+[?2004l[?2004h>         'status': 'running',
+[?2004l[?2004h>         'message': 'Welcome to the deployment pipeline demo',
+[?2004l[?2004h>         'version': '1.0.0'
+[?2004l[?2004h>     })
+[?2004l[?2004h> 
+[?2004l[?2004h> @app.route('/health')
+[?2004l[?2004h> def health():
+[?2004l[?2004h>     return jsonify({'status': 'healthy'})
+[?2004l[?2004h> 
+[?2004l[?2004h> @app.route('/ready')
+[?2004l[?2004h> def ready():
+[?2004l[?2004h>     # Check if app is ready to serve traffic
+[?2004l[?2004h>     return jsonify({'status': 'ready'})
+[?2004l[?2004h> 
+[?2004l[?2004h> if __name__ == '__main__':
+[?2004l[?2004h>     # Configure for containerized environment
+[?2004l[?2004h>     port = int(os.environ.get('PORT', 8080))
+[?2004l[?2004h>     app.run(host='0.0.0.0', port=port, debug=False)
+[?2004l[?2004h> EOF
+[?2004l[?2004hroot@9a8b22c8b22d:/app# 

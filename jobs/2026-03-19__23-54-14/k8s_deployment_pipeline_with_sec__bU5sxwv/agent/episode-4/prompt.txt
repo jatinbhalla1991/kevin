@@ -1,0 +1,6 @@
+New Terminal Output:
+
+# Missing proper CMD to run the applicationroot@ea7ce2207c16:/app# cat requirements.txt
+Flask==3.0.0
+gunicorn==21.2.0
+root@ea7ce2207c16:/app#

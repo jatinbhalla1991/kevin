@@ -1,0 +1,39 @@
+New Terminal Output:
+
+root@7c616623bfa1:/app# pip install -r requirements.txt
+Collecting Flask==3.0.0 (from -r requirements.txt (line 1))
+  Downloading flask-3.0.0-py3-none-any.whl.metadata (3.6 kB)
+Collecting gunicorn==21.2.0 (from -r requirements.txt (line 2))
+  Downloading gunicorn-21.2.0-py3-none-any.whl.metadata (4.1 kB)
+Collecting Werkzeug>=3.0.0 (from Flask==3.0.0->-r requirements.txt (line 1))
+  Downloading werkzeug-3.1.6-py3-none-any.whl.metadata (4.0 kB)
+Collecting Jinja2>=3.1.2 (from Flask==3.0.0->-r requirements.txt (line 1))
+  Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting itsdangerous>=2.1.2 (from Flask==3.0.0->-r requirements.txt (line 1))
+  Downloading itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
+Collecting click>=8.1.3 (from Flask==3.0.0->-r requirements.txt (line 1))
+  Downloading click-8.3.1-py3-none-any.whl.metadata (2.6 kB)
+Collecting blinker>=1.6.2 (from Flask==3.0.0->-r requirements.txt (line 1))
+  Downloading blinker-1.9.0-py3-none-any.whl.metadata (1.6 kB)
+Collecting packaging (from gunicorn==21.2.0->-r requirements.txt (line 2))
+  Downloading packaging-26.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting MarkupSafe>=2.0 (from Jinja2>=3.1.2->Flask==3.0.0->-r requirements.txt (line 1))
+  Downloading markupsafe-3.0.3-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (2.7 kB)
+Downloading flask-3.0.0-py3-none-any.whl (99 kB)
+Downloading gunicorn-21.2.0-py3-none-any.whl (80 kB)
+Downloading blinker-1.9.0-py3-none-any.whl (8.5 kB)
+Downloading click-8.3.1-py3-none-any.whl (108 kB)
+Downloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+Downloading werkzeug-3.1.6-py3-none-any.whl (225 kB)
+Downloading packaging-26.0-py3-none-any.whl (74 kB)
+Downloading markupsafe-3.0.3-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (24 kB)
+Installing collected packages: packaging, MarkupSafe, itsdangerous, click, blinker, Werkzeug, Jinja2, gunicorn, Flask
+Successfully installed Flask-3.0.0 Jinja2-3.1.6 MarkupSafe-3.0.3 Werkzeug-3.1.6 blinker-1.9.0 click-8.3.1 gunicorn-21.2.0 itsdangerous-2.2.0 packaging-26.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your syst
+em unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you a
+re doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 25.0.1 -> 26.0.1
+[notice] To update, run: pip install --upgrade pip
+root@7c616623bfa1:/app#

@@ -1,0 +1,34 @@
+New Terminal Output:
+
+root@9a8b22c8b22d:/app# cat > app.py << 'EOF'
+> """
+> A simple Flask web application for deployment
+> """
+> import os
+> from flask import Flask, jsonify
+>
+> app = Flask(__name__)
+>
+> @app.route('/')
+> def home():
+>     return jsonify({
+>         'status': 'running',
+>         'message': 'Welcome to the deployment pipeline demo',
+>         'version': '1.0.0'
+>     })
+>
+> @app.route('/health')
+> def health():
+>     return jsonify({'status': 'healthy'})
+>
+> @app.route('/ready')
+> def ready():
+>     # Check if app is ready to serve traffic
+>     return jsonify({'status': 'ready'})
+>
+> if __name__ == '__main__':
+>     # Configure for containerized environment
+>     port = int(os.environ.get('PORT', 8080))
+>     app.run(host='0.0.0.0', port=port, debug=False)
+> EOF
+root@9a8b22c8b22d:/app#

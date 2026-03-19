@@ -1,0 +1,41 @@
+New Terminal Output:
+root@2c820b58645d:/app# ls -la
+total 24
+drwxr-xr-x 1 root root 4096 Mar 19 18:07 .
+drwxr-xr-x 1 root root 4096 Mar 19 18:20 ..
+-rw-r--r-- 1 root root  207 Mar 19 18:06 Dockerfile
+-rw-r--r-- 1 root root  645 Mar 19 18:06 app.py
+-rw-r--r-- 1 root root  630 Mar 19 18:06 k8s-deployment.yaml
+-rw-r--r-- 1 root root   30 Mar 19 18:06 requirements.txt
+root@2c820b58645d:/app#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

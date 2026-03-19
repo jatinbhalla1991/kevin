@@ -1,0 +1,5 @@
+New Terminal Output:
+
+root@7c616623bfa1:/app# docker build -t web-app:latest .
+bash: docker: command not found
+root@7c616623bfa1:/app#

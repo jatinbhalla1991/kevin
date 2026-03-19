@@ -1,0 +1,54 @@
+Traceback (most recent call last):
+  File "/Users/jatinbhalla/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/trial/trial.py", line 483, in run
+    await self._execute_agent()
+  File "/Users/jatinbhalla/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/trial/trial.py", line 259, in _execute_agent
+    await asyncio.wait_for(
+    ...<6 lines>...
+    )
+  File "/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/Users/jatinbhalla/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/agents/terminus_2/terminus_2.py", line 1504, in run
+    await self._run_agent_loop(
+    ...<4 lines>...
+    )
+  File "/Users/jatinbhalla/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/agents/terminus_2/terminus_2.py", line 1325, in _run_agent_loop
+    timeout_occurred, terminal_output = await self._execute_commands(
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )
+    ^
+  File "/Users/jatinbhalla/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/agents/terminus_2/terminus_2.py", line 1142, in _execute_commands
+    await session.send_keys(
+    ...<3 lines>...
+    )
+  File "/Users/jatinbhalla/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/agents/terminus_2/tmux_session.py", line 563, in send_keys
+    await self._send_non_blocking_keys(
+    ...<2 lines>...
+    )
+  File "/Users/jatinbhalla/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/agents/terminus_2/tmux_session.py", line 518, in _send_non_blocking_keys
+    await self.environment.exec(self._tmux_send_keys(keys))
+  File "/Users/jatinbhalla/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/environments/docker/docker.py", line 349, in exec
+    return await self._run_docker_compose_command(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        exec_command, check=False, timeout_sec=timeout_sec
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/jatinbhalla/.local/share/uv/tools/harbor/lib/python3.13/site-packages/harbor/environments/docker/docker.py", line 197, in _run_docker_compose_command
+    stdout_bytes, stderr_bytes = await process.communicate()
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/subprocess.py", line 201, in communicate
+    stdin, stdout, stderr = await tasks.gather(stdin, stdout, stderr)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/subprocess.py", line 181, in _read_stream
+    output = await stream.read()
+             ^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/streams.py", line 723, in read
+    block = await self.read(self._limit)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/streams.py", line 730, in read
+    await self._wait_for_data('read')
+  File "/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/streams.py", line 539, in _wait_for_data
+    await self._waiter
+asyncio.exceptions.CancelledError

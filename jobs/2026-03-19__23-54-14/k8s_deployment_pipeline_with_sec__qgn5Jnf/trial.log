@@ -1,0 +1,15 @@
+Trajectory dumped to jobs/2026-03-19__23-54-14/k8s_deployment_pipeline_with_sec__qgn5Jnf/agent/trajectory.json
+Trajectory dumped to jobs/2026-03-19__23-54-14/k8s_deployment_pipeline_with_sec__qgn5Jnf/agent/trajectory.json
+Trajectory dumped to jobs/2026-03-19__23-54-14/k8s_deployment_pipeline_with_sec__qgn5Jnf/agent/trajectory.json
+Trajectory dumped to jobs/2026-03-19__23-54-14/k8s_deployment_pipeline_with_sec__qgn5Jnf/agent/trajectory.json
+Trajectory dumped to jobs/2026-03-19__23-54-14/k8s_deployment_pipeline_with_sec__qgn5Jnf/agent/trajectory.json
+Trajectory dumped to jobs/2026-03-19__23-54-14/k8s_deployment_pipeline_with_sec__qgn5Jnf/agent/trajectory.json
+Unknown Error in LLM interaction: litellm.RateLimitError: RateLimitError: GroqException - {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01km3a6vn7fzqrq0ywgqw1yb43` service tier `on_demand` on tokens per minute (TPM): Limit 10000, Used 7834, Requested 2695. Please try again in 3.174s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+
+Unknown Error in LLM interaction: litellm.RateLimitError: RateLimitError: GroqException - {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01km3a6vn7fzqrq0ywgqw1yb43` service tier `on_demand` on tokens per minute (TPM): Limit 10000, Used 9486, Requested 2695. Please try again in 13.085999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+
+Unknown Error in LLM interaction: litellm.RateLimitError: RateLimitError: GroqException - {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01km3a6vn7fzqrq0ywgqw1yb43` service tier `on_demand` on tokens per minute (TPM): Limit 10000, Used 7369, Requested 2695. Please try again in 384ms. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+
+Trajectory dumped to jobs/2026-03-19__23-54-14/k8s_deployment_pipeline_with_sec__qgn5Jnf/agent/trajectory.json
+Trial k8s_deployment_pipeline_with_sec__qgn5Jnf failed: litellm.RateLimitError: RateLimitError: GroqException - {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01km3a6vn7fzqrq0ywgqw1yb43` service tier `on_demand` on tokens per minute (TPM): Limit 10000, Used 7369, Requested 2695. Please try again in 384ms. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+

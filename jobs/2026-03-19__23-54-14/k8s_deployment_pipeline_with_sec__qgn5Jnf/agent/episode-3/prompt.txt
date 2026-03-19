@@ -1,0 +1,6 @@
+New Terminal Output:
+
+root@8b99547979a0:/app# cat requirements.txt
+Flask==3.0.0
+gunicorn==21.2.0
+root@8b99547979a0:/app#

@@ -1,0 +1,8 @@
+{"version": 2, "width": 160, "height": 40, "timestamp": 1773944406, "env": {"SHELL": "/bin/bash", "TERM": "tmux-256color"}}
+[0.025295, "o", "\u001b[?2004hroot@2c820b58645d:/app# "]
+[1.723536, "i", "clear\r"]
+[1.72747, "o", "clear\r\n\u001b[?2004l\r"]
+[1.771516, "o", "\u001b[H\u001b[J\u001b[3J\u001b[?2004hroot@2c820b58645d:/app# "]
+[14.783729, "i", "ls -la\n"]
+[14.881676, "o", "ls -la\r\n\u001b[?2004l\r"]
+[14.905554, "o", "total 24\r\ndrwxr-xr-x 1 root root 4096 Mar 19 18:07 .\r\ndrwxr-xr-x 1 root root 4096 Mar 19 18:20 ..\r\n-rw-r--r-- 1 root root  207 Mar 19 18:06 Dockerfile\r\n-rw-r--r-- 1 root root  645 Mar 19 18:06 app.py\r\n-rw-r--r-- 1 root root  630 Mar 19 18:06 k8s-deployment.yaml\r\n-rw-r--r-- 1 root root   30 Mar 19 18:06 requirements.txt\r\n\u001b[?2004hroot@2c820b58645d:/app# "]

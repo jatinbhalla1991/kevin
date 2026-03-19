@@ -1,0 +1,127 @@
+New Terminal Output:
+
+root@7c616623bfa1:/app# cat > deploy.sh << 'EOF'
+> #!/bin/bash
+>
+> # Deployment Pipeline Script
+> # This script orchestrates the complete deployment pipeline
+>
+> set -e  # Exit on any error
+>
+> SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+> IMAGE_NAME="web-app"
+> IMAGE_TAG="latest"
+> FULL_IMAGE_NAME="${IMAGE_NAME}:${IMAGE_TAG}"
+> SECURITY_REPORT="${SCRIPT_DIR}/security-report.json"
+> DEPLOYMENT_SUMMARY="${SCRIPT_DIR}/deployment-summary.txt"
+>
+> echo "Starting deployment pipeline..."
+>
+> # Step 1: Build Docker image
+> echo "Building Docker image: ${FULL_IMAGE_NAME}"
+> if ! command -v docker &> /dev/null; then
+>     echo "ERROR: Docker is not installed or not in PATH"
+>     exit 1
+> fi
+>
+> docker build -t "${FULL_IMAGE_NAME}" "${SCRIPT_DIR}"
+> if [ $? -ne 0 ]; then
+>     echo "ERROR: Docker build failed"
+>     exit 1
+> fi
+> echo "Docker image built successfully"
+>
+> # Step 2: Security scanning
+> echo "Running security vulnerability scan..."
+> if command -v trivy &> /dev/null; then
+>     echo "Using Trivy for security scanning..."
+>     trivy image --format json --output "${SECURITY_REPORT}" "${FULL_IMAGE_NAME}"
+> elif command -v docker &> /dev/null; then
+>     echo "Using Docker scan for security scanning..."
+>     docker scan --json "${FULL_IMAGE_NAME}" > "${SECURITY_REPORT}" 2>/dev/null || echo "Docker scan not available or failed"
+> else
+>     echo "WARNING: No security scanner available. Creating placeholder report."
+>     cat > "${SECURITY_REPORT}" << 'SECURITY_EOF'
+> {
+>   "scan_results": {
+>     "status": "scan_not_available",
+>     "message": "No security scanner (Trivy, Docker scan) available in this environment",
+>     "timestamp": "$(date -Iseconds)",
+>     "image": "${FULL_IMAGE_NAME}"
+>   }
+> }
+> SECURITY_EOF
+> fi
+>
+> # Step 3: Validate Kubernetes manifests
+> echo "Validating Kubernetes manifests..."
+> if command -v kubectl &> /dev/null; then
+>     echo "Using kubectl to validate manifests..."
+>     kubectl apply --dry-run=client -f "${SCRIPT_DIR}/k8s-deployment.yaml"
+>     if [ $? -ne 0 ]; then
+>         echo "ERROR: Kubernetes manifest validation failed"
+>         exit 1
+>     fi
+> elif command -v kubeval &> /dev/null; then
+>     echo "Using kubeval to validate manifests..."
+>     kubeval "${SCRIPT_DIR}/k8s-deployment.yaml"
+>     if [ $? -ne 0 ]; then
+>         echo "ERROR: Kubernetes manifest validation failed"
+>         exit 1
+>     fi
+> else
+>     echo "WARNING: No Kubernetes validator available. Basic YAML validation only."
+>     python3 -c "import yaml; yaml.safe_load(open('${SCRIPT_DIR}/k8s-deployment.yaml'))" || {
+>         echo "ERROR: Invalid YAML in Kubernetes manifest"
+>         exit 1
+>     }
+> fi
+>
+> # Step 4: Generate deployment summary
+> echo "Generating deployment summary..."
+> cat > "${DEPLOYMENT_SUMMARY}" << SUMMARY_EOF
+> Deployment Pipeline Summary
+> ==========================
+> Generated on: $(date)
+> Image: ${FULL_IMAGE_NAME}
+>
+> Application Status:
+> - Flask web application configured for container deployment
+> - Listening on port 8080
+> - Health check endpoints: /health, /ready
+>
+> Docker Image:
+> - Base image: python:3.12-slim
+> - Application server: gunicorn with 3 workers
+> - Port exposed: 8080
+>
+> Security Scanning:
+> - Scan results saved to: ${SECURITY_REPORT}
+> - Review the security report for any critical vulnerabilities
+>
+> Kubernetes Configuration:
+> - Deployment name: web-app
+> - Replicas: 2
+> - Service type: ClusterIP
+> - Container port: 8080
+> - Service port: 80
+> - Health checks: Liveness and readiness probes configured
+> - Resource limits: Memory 256Mi, CPU 200m
+> - Resource requests: Memory 128Mi, CPU 100m
+>
+> Next Steps:
+> 1. Review security report: ${SECURITY_REPORT}
+> 2. Push image to registry if needed
+> 3. Deploy to Kubernetes: kubectl apply -f k8s-deployment.yaml
+> 4. Verify deployment: kubectl get pods -l app=web-app
+>
+> Files Generated:
+> - ${SECURITY_REPORT}
+> - ${DEPLOYMENT_SUMMARY}
+> SUMMARY_EOF
+>
+> echo "Deployment pipeline completed successfully!"
+> echo "Check ${DEPLOYMENT_SUMMARY} for details"
+> echo "Check ${SECURITY_REPORT} for security scan results"
+> EOF
+root@7c616623bfa1:/app#

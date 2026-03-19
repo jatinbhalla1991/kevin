@@ -1,0 +1,34 @@
+New Terminal Output:
+
+root@ea7ce2207c16:/app# cat app.py
+"""
+A simple Flask web application for deployment
+"""
+import os
+from flask import Flask, jsonify
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return jsonify({
+        'status': 'running',
+        'message': 'Welcome to the deployment pipeline demo',
+        'version': '1.0.0'
+    })
+
+@app.route('/health')
+def health():
+    return jsonify({'status': 'healthy'})
+
+@app.route('/ready')
+def ready():
+    # Check if app is ready to serve traffic
+    return jsonify({'status': 'ready'})
+
+if __name__ == '__main__':
+    # Missing proper host configuration for container environment
+    # Missing port configuration
+    app.run(debug=True)
+root@ea7ce2207c16:/app#
+
