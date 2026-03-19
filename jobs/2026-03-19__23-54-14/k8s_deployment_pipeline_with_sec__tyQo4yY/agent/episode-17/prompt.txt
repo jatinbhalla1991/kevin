@@ -1,0 +1,7 @@
+New Terminal Output:
+
+root@7c616623bfa1:/app# ./deploy.sh
+Starting deployment pipeline...
+Building Docker image: web-app:latest
+ERROR: Docker is not installed or not in PATH
+root@7c616623bfa1:/app#

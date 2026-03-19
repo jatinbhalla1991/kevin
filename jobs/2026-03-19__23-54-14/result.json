@@ -1,15 +1,15 @@
 {
     "id": "374a8cd5-7cd9-4644-aa92-a36cc5e5e5db",
     "started_at": "2026-03-19T23:54:14.854136",
-    "finished_at": null,
+    "finished_at": "2026-03-19T23:59:22.329387",
     "n_total_trials": 5,
     "stats": {
-        "n_trials": 4,
-        "n_errors": 4,
+        "n_trials": 5,
+        "n_errors": 5,
         "evals": {
             "terminus-2__moonshotai-kimi-k2-instruct-0905__adhoc": {
                 "n_trials": 0,
-                "n_errors": 4,
+                "n_errors": 5,
                 "metrics": [
                     {
                         "mean": 0.0
@@ -18,14 +18,14 @@
                 "reward_stats": {},
                 "exception_stats": {
                     "RateLimitError": [
-                        "k8s_deployment_pipeline_with_sec__qgn5Jnf",
-                        "k8s_deployment_pipeline_with_sec__bU5sxwv",
+                        "k8s_deployment_pipeline_with_sec__zEZTfh9",
                         "k8s_deployment_pipeline_with_sec__Efge2RX",
-                        "k8s_deployment_pipeline_with_sec__zEZTfh9"
+                        "k8s_deployment_pipeline_with_sec__bU5sxwv",
+                        "k8s_deployment_pipeline_with_sec__qgn5Jnf",
+                        "k8s_deployment_pipeline_with_sec__tyQo4yY"
                     ]
                 }
             }
         }
-    },
-    "trial_results": []
+    }
 }

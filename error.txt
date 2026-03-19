@@ -1,12 +1,6 @@
-Give Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new
-LiteLLM.Info: If you need to debug this error, use `litellm._turn_on_debug()'.
-
-⠴  3/10 Mean: 0.000 ━━━━━━━━━━━━╺━━━━━━━━━━━━━━━━━━━━━━━━━━━ 0:01:51 0:00:48
-⠴ 0:01:51 k8s_deployment_pipeline_with_sec__SDgkzY6: running agent...
-⠴ 0:01:51 k8s_deployment_pipeline_with_sec__Zgf7QVC: running agent...
-⠴ 0:01:51 k8s_deployment_pipeline_with_sec__s2tEhcd: running agent...
-  10/10 Mean: 0.000 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 0:02:02 0:00:00
-Results written to jobs/2026-03-19__23-39-22/result.json
+0:04:56 k8s_deployment_pipeline_with_sec__tyQo4yY: running agent...Unknown Error in LLM interaction: litellm.RateLimitError: RateLimitError: GroqException - {"error":{"message":"Request too large for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01km3a6vn7fzqrq0ywgqw1yb43` service tier `on_demand` on tokens per minute (TPM): Limit 10000, Requested 12454, please reduce your message size and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+  5/5 Mean: 0.000 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 0:05:07 0:00:00
+Results written to jobs/2026-03-19__23-54-14/result.json
           terminus-2 (moonshotai-kimi-k2-instruct-0905) on adhoc          
 ┏━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃ Metric                 ┃ Value                                         ┃
@@ -14,12 +8,10 @@ Results written to jobs/2026-03-19__23-39-22/result.json
 │ Agent                  │ terminus-2 (moonshotai-kimi-k2-instruct-0905) │
 │ Dataset                │ adhoc                                         │
 │ Trials                 │ 0                                             │
-│ Errors                 │ 10                                            │
+│ Errors                 │ 5                                             │
 │                        │                                               │
 │ Mean                   │ 0.000                                         │
 │                        │                                               │
 │ Exception Distribution │                                               │
-│   BadRequestError      │ 10                                            │
+│   RateLimitError       │ 5                                             │
 └────────────────────────┴───────────────────────────────────────────────┘
-
-k8s_deployment_pipeline_with_sec__tyQo4yY: running agent...Unknown Error in LLM interaction: litellm.RateLimitError: RateLimitError: GroqException - {"error":{"message":"Rate limit reached for model `moonshotai/kimi-k2-instruct-0905` in organization `org_01km3a6vn7fzqrq0ywgqw1yb43` service tier `on_demand` on tokens per minute (TPM): Limit 10000, Used 3350, Requested 7601. Please try again in 5.706s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
