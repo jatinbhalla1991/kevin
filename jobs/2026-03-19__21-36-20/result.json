@@ -1,0 +1,27 @@
+{
+    "id": "9ddc254b-0d98-4238-85bc-3f263c5389ae",
+    "started_at": "2026-03-19T21:36:20.711071",
+    "finished_at": "2026-03-19T21:36:20.777527",
+    "n_total_trials": 1,
+    "stats": {
+        "n_trials": 1,
+        "n_errors": 1,
+        "evals": {
+            "oracle__adhoc": {
+                "n_trials": 0,
+                "n_errors": 1,
+                "metrics": [
+                    {
+                        "mean": 0.0
+                    }
+                ],
+                "reward_stats": {},
+                "exception_stats": {
+                    "NotImplementedError": [
+                        "k8s_deployment_pipeline_with_sec__QgZBPsB"
+                    ]
+                }
+            }
+        }
+    }
+}
