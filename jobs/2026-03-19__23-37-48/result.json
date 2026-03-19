@@ -1,0 +1,29 @@
+{
+    "id": "673f881a-cacb-49c5-9579-dabf2715f6cc",
+    "started_at": "2026-03-19T23:37:48.103982",
+    "finished_at": "2026-03-19T23:38:40.245942",
+    "n_total_trials": 1,
+    "stats": {
+        "n_trials": 1,
+        "n_errors": 0,
+        "evals": {
+            "oracle__adhoc": {
+                "n_trials": 1,
+                "n_errors": 0,
+                "metrics": [
+                    {
+                        "mean": 0.0
+                    }
+                ],
+                "reward_stats": {
+                    "reward": {
+                        "0.0": [
+                            "k8s_deployment_pipeline_with_sec__vYXmvA4"
+                        ]
+                    }
+                },
+                "exception_stats": {}
+            }
+        }
+    }
+}
